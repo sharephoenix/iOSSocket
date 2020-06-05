@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		754D979D03D00B141EA9379A /* Pods_SocketPod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752185B84B319E12577F4781 /* Pods_SocketPod.framework */; };
 		F3DC6807248A3A9F00EA05A3 /* SocketPod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3DC67FD248A3A9F00EA05A3 /* SocketPod.framework */; };
 		F3DC680C248A3A9F00EA05A3 /* SocketPodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC680B248A3A9F00EA05A3 /* SocketPodTests.swift */; };
 		F3DC680E248A3A9F00EA05A3 /* SocketPod.h in Headers */ = {isa = PBXBuildFile; fileRef = F3DC6800248A3A9F00EA05A3 /* SocketPod.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3DC681F248A3AF800EA05A3 /* SocketManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC681D248A3AF800EA05A3 /* SocketManagerProtocol.swift */; };
-		F3DC6820248A3AF800EA05A3 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC681E248A3AF800EA05A3 /* SocketManager.swift */; };
+		F3DC6822248A4FD600EA05A3 /* WebSocektManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC6821248A4FD600EA05A3 /* WebSocektManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		752185B84B319E12577F4781 /* Pods_SocketPod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocketPod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC731022D16C693B9DAC62EB /* Pods-SocketPod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketPod.debug.xcconfig"; path = "Target Support Files/Pods-SocketPod/Pods-SocketPod.debug.xcconfig"; sourceTree = "<group>"; };
 		F3DC67FD248A3A9F00EA05A3 /* SocketPod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocketPod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DC6800248A3A9F00EA05A3 /* SocketPod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketPod.h; sourceTree = "<group>"; };
 		F3DC6801248A3A9F00EA05A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,7 +35,8 @@
 		F3DC680B248A3A9F00EA05A3 /* SocketPodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketPodTests.swift; sourceTree = "<group>"; };
 		F3DC680D248A3A9F00EA05A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3DC681D248A3AF800EA05A3 /* SocketManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManagerProtocol.swift; sourceTree = "<group>"; };
-		F3DC681E248A3AF800EA05A3 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		F3DC6821248A4FD600EA05A3 /* WebSocektManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocektManager.swift; sourceTree = "<group>"; };
+		F6712C8BD2F5E2F30A9BB874 /* Pods-SocketPod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketPod.release.xcconfig"; path = "Target Support Files/Pods-SocketPod/Pods-SocketPod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754D979D03D00B141EA9379A /* Pods_SocketPod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,12 +59,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FA4EB14572DF7A3A3CFB0A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				752185B84B319E12577F4781 /* Pods_SocketPod.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E20B42608651ECD59AC51F04 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC731022D16C693B9DAC62EB /* Pods-SocketPod.debug.xcconfig */,
+				F6712C8BD2F5E2F30A9BB874 /* Pods-SocketPod.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		F3DC67F3248A3A9F00EA05A3 = {
 			isa = PBXGroup;
 			children = (
 				F3DC67FF248A3A9F00EA05A3 /* SocketPod */,
 				F3DC680A248A3A9F00EA05A3 /* SocketPodTests */,
 				F3DC67FE248A3A9F00EA05A3 /* Products */,
+				E20B42608651ECD59AC51F04 /* Pods */,
+				8FA4EB14572DF7A3A3CFB0A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,8 +119,8 @@
 		F3DC681C248A3AF800EA05A3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F3DC6821248A4FD600EA05A3 /* WebSocektManager.swift */,
 				F3DC681D248A3AF800EA05A3 /* SocketManagerProtocol.swift */,
-				F3DC681E248A3AF800EA05A3 /* SocketManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -118,6 +143,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3DC6811248A3A9F00EA05A3 /* Build configuration list for PBXNativeTarget "SocketPod" */;
 			buildPhases = (
+				FA5CCFDDF6686E195619F878 /* [CP] Check Pods Manifest.lock */,
 				F3DC67F8248A3A9F00EA05A3 /* Headers */,
 				F3DC67F9248A3A9F00EA05A3 /* Sources */,
 				F3DC67FA248A3A9F00EA05A3 /* Frameworks */,
@@ -204,13 +230,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FA5CCFDDF6686E195619F878 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SocketPod-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F3DC67F9248A3A9F00EA05A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3DC6820248A3AF800EA05A3 /* SocketManager.swift in Sources */,
 				F3DC681F248A3AF800EA05A3 /* SocketManagerProtocol.swift in Sources */,
+				F3DC6822248A4FD600EA05A3 /* WebSocektManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +406,7 @@
 		};
 		F3DC6812248A3A9F00EA05A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC731022D16C693B9DAC62EB /* Pods-SocketPod.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -363,6 +415,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SocketPod/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,6 +431,7 @@
 		};
 		F3DC6813248A3A9F00EA05A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6712C8BD2F5E2F30A9BB874 /* Pods-SocketPod.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -386,6 +440,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SocketPod/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

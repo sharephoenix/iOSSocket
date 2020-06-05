@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SocketPod
 
 class ViewController: UIViewController {
-
+    private let ma = WebSocektManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ma.connect()
     }
 }
 
