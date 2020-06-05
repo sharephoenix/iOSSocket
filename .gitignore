@@ -1,0 +1,13 @@
+*.xcuserdata
+.DS_Store
+Pods
+Pods/
+xcuserdata/*
+xcuserdata
+blackboard.xcworkspace/xcuserdata
+j2objc
+submodules/Mars/Mars/j2objc
+Podfile.lock
+mars/j2objc
+*.xcuserstate
+*.xcuserdatad
