@@ -26,12 +26,12 @@ public enum SocketStatus {
 public class WebSocektManager: NSObject, SocketManagerProtocol {
     
     private var urlStr: String
-    
     private var socket: WebSocket!
     
     public var startDebug = false
     public var onCallback: ((String) -> Void)?
     public var onErrorCallback: ((NSError) -> Void)?
+    public var onStatusCallback: ((SocketStatus, String) -> Void)?
     
     public var socketStatus: SocketStatus {
         var status: SocketStatus = .disConnect
@@ -50,6 +50,14 @@ public class WebSocektManager: NSObject, SocketManagerProtocol {
     
     public func connect() {
         connectTest1()
+    }
+    
+    public func disConnect() {
+        guard socketStatus == .connected else {
+            podLog(msg: "已经断开连接")
+            return
+        }
+        socket.disconnect()
     }
     
     public func emit(content: String) {
@@ -86,21 +94,21 @@ public class WebSocektManager: NSObject, SocketManagerProtocol {
 extension WebSocektManager: WebSocketDelegate {
 
     public func websocketDidConnect(socket: WebSocketClient) {
-        podLog(msg: "", debug: startDebug)
+        defer { podLog(msg: "", debug: startDebug) }
+        onStatusCallback?(.connected, "")
     }
     
     public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        podLog(msg: "\(String(describing: error))", debug: startDebug)
-        let err = NSError(domain: error.debugDescription, code: -1, userInfo: nil)
-        onErrorCallback?(err)
+        defer { podLog(msg: "\(String(describing: error))", debug: startDebug) }
+        onStatusCallback?(.disConnect, error.debugDescription)
     }
     
     public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        defer { podLog(msg: text, debug: startDebug) }
         onCallback?(text)
-        podLog(msg: text, debug: startDebug)
     }
     
     public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        podLog(msg: "", debug: startDebug)
+        podLog(msg: "此功能暂未开放", debug: startDebug)
     }
 }
