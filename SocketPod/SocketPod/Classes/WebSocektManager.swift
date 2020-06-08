@@ -9,45 +9,98 @@
 import UIKit
 import Foundation
 import SocketIO
+import Starscream
+import SocketRocket
+
+func podLog(msg: String, func: String = #function, debug: Bool = false) {
+    if debug {
+        print("\(msg)\t\(`func`)")
+    }
+}
+
+public enum SocketStatus {
+    case connected
+    case disConnect
+}
+
+public class WebSocektManager: NSObject, SocketManagerProtocol {
     
-public class WebSocektManager: NSObject {
-    private var manager: SocketManager!
-    private var onCallBack: ((Any) -> Void)?
+    private var urlStr: String
+    
+    private var socket: WebSocket!
+    
+    public var startDebug = false
+    public var onCallback: ((String) -> Void)?
+    public var onErrorCallback: ((NSError) -> Void)?
+    
+    public var socketStatus: SocketStatus {
+        var status: SocketStatus = .disConnect
+        switch socket.isConnected {
+        case true:
+            status = .connected
+        default:
+            status = .disConnect
+        }
+        return status
+    }
+    
+    public required init(wsUrl: String) {
+        urlStr = wsUrl
+    }
     
     public func connect() {
-        manager = SocketManager(socketURL: URL(string: "http://192.168.40.114:2080")!, config: [.log(true), .compress])
-        let socket = manager.defaultSocket
+        connectTest1()
+    }
+    
+    public func emit(content: String) {
+        write1(msg: content)
+    }
 
-        socket.on(clientEvent: .connect) {data, ack in
-            print("socket connected")
+    // MARK: - Private Function
+    private func connectTest1() {
+        defer {
+            podLog(msg: "start", debug: startDebug)
         }
-
-        socket.on("data") {data, ack in
-            print("===========Data")
-            print("\(data)")
-            print("\(ack)")
-        }
-
-        socket.on("client") {data, ack in
-            print("===========Data")
-            print("\(data)")
-            print("\(ack)")
-        }
-
-        socket.on("end") {data, ack in
-            print("===========End")
-            print("\(data)")
-            print("\(ack)")
-        }
-
+        var request = URLRequest(url: URL(string: urlStr)!)
+        request.timeoutInterval = 5
+        socket = WebSocket(request: request)
+        socket.delegate = self
         socket.connect()
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-////            "{\"portocal\": \"boardcast\", \"from\": \"client\", \"message\": \"hello\"}"
-//           socket.emitWithAck("currentAmount", "{\"portocal\": \"boardcast\", \"from\": \"client\", \"message\": \"hello\"}").timingOut(after: 0) {data in
-//            print("\(data)")
-//            }
-//            print("asdfkja;")
-//        }
+    }
+    
+    private func write1(msg: String) {
+        podLog(msg: "\(socket.isConnected)", debug: startDebug)
+        if !socket.isConnected {
+            socket.connect()
+            podLog(msg: "begin Connect!!!")
+            return
+        }
+        socket.write(string: msg)
+    }
+    
+    deinit {
+        socket.disconnect()
+    }
+}
+// MARK: webSocketDelegate
+extension WebSocektManager: WebSocketDelegate {
+
+    public func websocketDidConnect(socket: WebSocketClient) {
+        podLog(msg: "", debug: startDebug)
+    }
+    
+    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        podLog(msg: "\(String(describing: error))", debug: startDebug)
+        let err = NSError(domain: error.debugDescription, code: -1, userInfo: nil)
+        onErrorCallback?(err)
+    }
+    
+    public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        onCallback?(text)
+        podLog(msg: text, debug: startDebug)
+    }
+    
+    public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        podLog(msg: "", debug: startDebug)
     }
 }

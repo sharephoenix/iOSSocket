@@ -8,8 +8,9 @@ target 'SocketProject' do
   project 'SocketProject/SocketProject.xcodeproj'
   use_frameworks!
   pod 'Socket.IO-Client-Swift', '15.2.0'
+  pod 'Starscream'
   pod 'SnapKit'
-
+  pod 'SocketRocket'
 end
 
 target 'SocketPod' do
@@ -17,6 +18,8 @@ target 'SocketPod' do
   use_frameworks!
 #  pod 'SocketIO', '15.2.0'
   pod 'Socket.IO-Client-Swift', '15.2.0'
+  pod 'Starscream'
+  pod 'SocketRocket'
 #  pod 'ReactiveSwift', '~> 6.1'
 #  pod 'SnapKit'
 end

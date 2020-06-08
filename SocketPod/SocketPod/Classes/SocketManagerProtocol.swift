@@ -9,5 +9,9 @@
 import UIKit
 
 protocol SocketManagerProtocol {
-
+    init(wsUrl: String)
+    var socketStatus: SocketStatus { get }
+    var onCallback: ((String) -> Void)? { get set }
+    var onErrorCallback: ((NSError) -> Void)? { get set}
+    var startDebug: Bool { get set }
 }
